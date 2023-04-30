@@ -6,13 +6,15 @@
  */
 var threeSum = function(nums) {
     const results = [];
-
+    nums.sort((a, b) => a - b);
     // create a map to be able to quickly determine if we have a particular number in the input set
     const numbersMap = nums.reduce((prev, curr, index) => {
         prev[curr] = index;
         return prev;
     }, {})
-    for(let firstIndex = 0; firstIndex < nums.length - 2; firstIndex++){
+    for(let firstIndex = 0; firstIndex < nums.length - 2; firstIndex++) {
+        // the array is sorted. It makes no sense to proceed if the first number is positive
+        if(nums[firstIndex] > 0) break;
         for(let secondIndex = firstIndex + 1; secondIndex < nums.length - 1; secondIndex++){
             // calculate the number we need to have 0 sum
             const thirdNumber = - (nums[firstIndex] + nums[secondIndex]);
