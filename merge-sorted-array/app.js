@@ -14,7 +14,7 @@
       const num1El = nums1Data[0];
       const num2El = nums2[0];
 
-      if(num1El <= num2El){
+      if(num1El <= num2El || num2El === undefined){
         result.push(num1El);
         nums1Data.shift();
       } else {
